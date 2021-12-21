@@ -1,0 +1,28 @@
+1. Define input and output directories in settings.py. It could be any directory on PC;
+defaults - input and output in this directory.
+
+2. Put desired files in your input dir
+
+3. If you want to enable denoiser, set denoising = True in settings; default - False (denoising disabled)
+
+4. If denoiser is enabled, define sample rate, frame size and quantity of noise frames from the beginning
+of your input files.
+Keep in mind that time dimension of frame  depends on sample rate AND frame size (e.g. if sample rate is 8000 and
+frame size is 1024, length of one frame will be about 0.128 secs)
+
+5. Set desired codec speed mode in settings. Modes 3200, 2400, 1600, 1200, 700 and 500 are available; modes 600 and 450
+are deprecated due to poor perfomance - legibility of Russian speech is dramatically low in this modes.
+
+6. Run run.py. It don't need any parameters so simply run it in IDE or 'python run.py' in terminal.
+
+
+
+0. Required external libraries are mentioned in requirements.txt. You can install them via
+'pip install -r requirements.txt'.
+
+-1. Keep in mind, that for low-speed modes (~especially~ 500) input files need some preprocessing -
+at least high-pass filter, because many sounds below certain threshold are corrupted. But HPF could damage
+input signal too, so maybe certain recording conditions could be the solution.
+TODO: Implement such a HPF to preprocess samples in low-speed modes
+
+-2. Project was built and tested on macOS and Linux, so it most likely does not work on Windows.
